@@ -1,26 +1,19 @@
 package model;
 
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.catalina.Session;
 
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
-
-import sun.rmi.transport.Transport;
-
-/**
- * A utility classs for sending e-mail messages
- * @author www.codejava.net
- *
- */
 public class EmailUtility {
 	public static void sendEmail(String host, String port,
 			final String userName, final String password, String toAddress,
