@@ -13,5 +13,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Jar_files/itextpdf-5.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Jar_files/mail_1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Jar_files/mysql-connector-java-5.1.23-bin.jar"/>
+	<classpathentry kind="lib" path="C:/tomcat-apache/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
