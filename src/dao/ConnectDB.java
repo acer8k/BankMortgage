@@ -13,7 +13,7 @@ public class ConnectDB {
 		try{
 
 			Class.forName("com.mysql.jdbc.Driver");
-			cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+			cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 		}catch(SQLException sql){
 			System.err.println(sql.getMessage());
 			sql.printStackTrace();

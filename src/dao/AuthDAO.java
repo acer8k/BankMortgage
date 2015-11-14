@@ -24,7 +24,7 @@ public class AuthDAO {
 		try {
 			//ConnectToDB();
 			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 			String q = "SELECT username, firstName, lastName FROM users"
 					+ " JOIN user_profiles ON users.user_Id=user_profiles.user_Id"
 					+ " WHERE users.user_Id="
@@ -60,7 +60,7 @@ public class AuthDAO {
 		try {
 			//ConnectToDB();
 			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 
 			//String q = "SELECT userId FROM user WHERE BINARY username='" + username + "' AND BINARY password='"
 				//	+ password";
@@ -88,7 +88,7 @@ public class AuthDAO {
 		try {
 			//ConnectToDB();
 			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 			String q = "SELECT username FROM users";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(q);
@@ -115,7 +115,7 @@ public class AuthDAO {
 				//ConnectToDB();
 				
 				 Class.forName("com.mysql.jdbc.Driver");
-				 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+				 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 
 				String q0 = "Select user_Id from users ORDER BY user_Id DESC LIMIT 1";
 				Statement st = cn.createStatement();
@@ -169,7 +169,7 @@ public class AuthDAO {
 		try {
 		//	ConnectToDB();
 			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "and", "and");
+			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
 			 
 			String q1 = "INSERT into user_profiles "
 					+ "(user_Id, firstname, lastname, address, city)"

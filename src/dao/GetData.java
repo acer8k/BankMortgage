@@ -13,8 +13,8 @@ public class GetData {
 
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_CONNECTION = "jdbc:mysql://localhost/bank";
-	private static final String DB_USER = "and";
-	private static final String DB_PASSWORD = "and";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "4580";
 	
 	public static ArrayList<Account> getAccounts(int userId){
 		

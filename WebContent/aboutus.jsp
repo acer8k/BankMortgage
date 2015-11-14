@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>About US</title>
+<title>About Us</title>
 </head>
 <body>
 <link rel="stylesheet" href="css_styles/bootstrap.homescreen.css" />

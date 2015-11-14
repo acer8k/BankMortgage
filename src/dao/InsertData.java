@@ -12,8 +12,8 @@ public class InsertData {
 
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
 	private static final String DB_CONNECTION = "jdbc:mysql://localhost/bank";
-	private static final String DB_USER = "and";
-	private static final String DB_PASSWORD = "and";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "4580";
 	
 	public int insertUser(User in) throws SQLException {
 

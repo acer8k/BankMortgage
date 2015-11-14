@@ -1,37 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>BankMortgage</display-name>
+  <display-name>Z_Lab002</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
-  	<!-- SMTP settings -->
-	<context-param>
-		<param-name>host</param-name>
-		<param-value>smtp.gmail.com</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>port</param-name>
-		<param-value>587</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>user</param-name>
-		<param-value>ualbanybank@gmail.com</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>pass</param-name>
-		<param-value>bank@123</param-value>
-	</context-param>
-
-	<welcome-file-list>
-		<welcome-file>EmailForm.jsp</welcome-file>
-	</welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutServlet</display-name>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SignupServlet</display-name>
+    <servlet-name>SignupServlet</servlet-name>
+    <servlet-class>controller.SignupServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignupServlet</servlet-name>
+    <url-pattern>/SignupServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmailSendingServlet</display-name>
+    <servlet-name>EmailSendingServlet</servlet-name>
+    <servlet-class>controller.EmailSendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailSendingServlet</servlet-name>
+    <url-pattern>/EmailSendingServlet</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>host</param-name>
+    <param-value>smtp.gmail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>port</param-name>
+    <param-value>587</param-value>
+  </context-param>
+  <context-param>
+    <param-name>user</param-name>
+    <param-value>ualbanybank@gmail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>pass</param-name>
+    <param-value>bank@123</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>ViewAccnType</display-name>
+    <servlet-name>ViewAccnType</servlet-name>
+    <servlet-class>controller.ViewAccnType</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAccnType</servlet-name>
+    <url-pattern>/ViewAccnType</url-pattern>
+  </servlet-mapping>
 </web-app>
