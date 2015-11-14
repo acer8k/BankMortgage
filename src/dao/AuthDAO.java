@@ -14,6 +14,11 @@ import static dao.*;
 
 public class AuthDAO {
 	static Connection cn;
+	
+	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private static final String DB_CONNECTION = "jdbc:mysql://localhost/bank";
+	private static final String DB_USER = "root";
+	private static final String DB_PASSWORD = "4580";
 
 	public static User getUserById(int userId) {
 		String username = "";
@@ -23,8 +28,8 @@ public class AuthDAO {
 
 		try {
 			//ConnectToDB();
-			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
+			 Class.forName(DB_DRIVER);
+			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 			String q = "SELECT username, firstName, lastName FROM users"
 					+ " JOIN user_profiles ON users.user_Id=user_profiles.user_Id"
 					+ " WHERE users.user_Id="
@@ -59,8 +64,8 @@ public class AuthDAO {
 		int userId = -1;
 		try {
 			//ConnectToDB();
-			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
+			 Class.forName(DB_DRIVER);
+			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 
 			//String q = "SELECT userId FROM user WHERE BINARY username='" + username + "' AND BINARY password='"
 				//	+ password";
@@ -87,8 +92,8 @@ public class AuthDAO {
 	public static boolean checkUserNameAvailable(String username) {
 		try {
 			//ConnectToDB();
-			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
+			 Class.forName(DB_DRIVER);
+			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 			String q = "SELECT username FROM users";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(q);
@@ -114,8 +119,8 @@ public class AuthDAO {
 			if (checkUserNameAvailable(username) == true) {
 				//ConnectToDB();
 				
-				 Class.forName("com.mysql.jdbc.Driver");
-				 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
+				 Class.forName(DB_DRIVER);
+				 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 
 				String q0 = "Select user_Id from users ORDER BY user_Id DESC LIMIT 1";
 				Statement st = cn.createStatement();
@@ -168,8 +173,8 @@ public class AuthDAO {
 
 		try {
 		//	ConnectToDB();
-			 Class.forName("com.mysql.jdbc.Driver");
-			 cn = DriverManager.getConnection("jdbc:mysql://localhost/bank", "root", "4580");
+			 Class.forName(DB_DRIVER);
+			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 			 
 			String q1 = "INSERT into user_profiles "
 					+ "(user_Id, firstname, lastname, address, city)"
