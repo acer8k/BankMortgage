@@ -35,13 +35,15 @@
             <li><a href="#">Page 1-3</a></li>
           </ul>
         </li> -->
-         <li><a href="homescreen.jsp">Home</a></li>
+         <li><a href="homescreen_unlocked.jsp">Home</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <li><a href="aboutus.jsp"></span> About Us</a></li>
         <li><a href="contact2.jsp"></span> Contact Us</a></li>
-        <li><a href="login.jsp"></span> Logout</a></li>
+        <li>	<form action="LogoutServlet" method="post">
+ 	<input type="submit" value="Logout" name="logout " style="background-color:#660066; color:#FFFF00; height:50px; width:65px; font-weight: 900;"/>
+      </form></li>
       </ul>
     </div>
   </div>
