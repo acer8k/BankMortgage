@@ -1,10 +1,11 @@
 <%@page import="model.*"%>
+<%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-	String loggedIn = (String) session.getAttribute("loggedIn");
+	//String loggedIn = (String) session.getAttribute("loggedIn");
 	User_Profile u = (User_Profile)session.getAttribute("user");
 	User userJava = (User)session.getAttribute("userJ");
 	String msg = (String) request.getAttribute("msg");
@@ -78,13 +79,14 @@
     <thead>
       <tr>
         <th>E-MAIL</th>
-        <td>22</td>
+                <td>Error displaying email</td>
+        <%-- <td><%=userJava.getEmail()%></td> --%>
       </tr>
     </thead>
 	    <thead>
       <tr>
         <th>Phone #</th>
-        <td>Kashif</td>
+        <td><%=u.getPhone_number()%></td>
       </tr>
     </thead>
   </table>
@@ -104,10 +106,22 @@
         <td><%=u.getCity()%></td>
       </tr>
     </thead>
+    <thead>
+      <tr>
+        <th>State</th>
+        <td><%=u.getState_country()%></td>
+      </tr>
+    </thead>
 	<thead>
       <tr>
         <th>Zip</th>
-        <td>12205</td>
+        <td><%=u.getZipcode()%></td>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th>userID</th>
+        <td><%=u.getUserId()%></td>
       </tr>
     </thead>
 

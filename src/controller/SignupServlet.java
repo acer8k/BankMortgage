@@ -50,9 +50,9 @@ public class SignupServlet extends HttpServlet {
 		/*USER_PROFILE TABLE*/
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
-		String state = request.getParameter("state");
+		String state_country = request.getParameter("state_country");
 		String zipcode = request.getParameter("zipcode");
-		String phonenumber = request.getParameter("phonenumber");
+		String phone_number = request.getParameter("phone_number");
 		
 		//String role = request.getParameter("role");
 		String password = request.getParameter("password");
@@ -136,7 +136,7 @@ public class SignupServlet extends HttpServlet {
 			request.setAttribute("msg", msg);
 			flag=0;
 		}
-		if(state.length()==0){
+		if(state_country.length()==0){
 			url = "/signup.jsp";
 			msg = msg + "\n State not entered";
 			request.setAttribute("msg", msg);
@@ -148,7 +148,7 @@ public class SignupServlet extends HttpServlet {
 			request.setAttribute("msg", msg);
 			flag=0;
 		}
-		if(phonenumber.length()==0){
+		if(phone_number.length()==0){
 			url = "/signup.jsp";
 			msg = msg + "\n Phone # not entered";
 			request.setAttribute("msg", msg);
@@ -178,7 +178,7 @@ public class SignupServlet extends HttpServlet {
 		}
 
 		else if(username.length()!=0 && firstname.length()!=0 && lastname.length()!=0 && eflag==1
-				&& address.length()!=0 && city.length()!=0 && state.length()!=0 && zipcode.length()!=0 && phonenumber.length()!=0
+				&& address.length()!=0 && city.length()!=0 && state_country.length()!=0 && zipcode.length()!=0 && phone_number.length()!=0
 				&& password.length()!=0 && cpassword.length()!=0 && password.equals(cpassword))
 			flag = 1;
 		if(flag ==1){
@@ -186,7 +186,7 @@ public class SignupServlet extends HttpServlet {
 			
 			if(userId >0){
 				status = enterUsername(userId, firstname, lastname,
-						address, city, state, zipcode, phonenumber);
+						address, city, state_country, zipcode, phone_number);
 				if(status == true){
 					msg = "Your bank account is created successfully!";
 					request.setAttribute("msg", msg);

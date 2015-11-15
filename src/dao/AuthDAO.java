@@ -168,8 +168,8 @@ public class AuthDAO {
 	public static boolean enterUsername(int userId, 
 						String firstname, String lastname,
 						String address, String city,
-						String state, String zipcode,
-						String phonenumber) {
+						String state_country, String zipcode,
+						String phone_number) {
 
 		try {
 		//	ConnectToDB();
@@ -177,8 +177,8 @@ public class AuthDAO {
 			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
 			 
 			String q1 = "INSERT into user_profiles "
-					+ "(user_Id, firstname, lastname, address, city)"
-					+ " values (?, ?, ?, ?, ?)";
+					+ "(user_Id, firstname, lastname, address, city, state_country, zipcode, phonenumber)"
+					+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement ps = cn.prepareStatement(q1);
 			ps.setInt(1, userId);
@@ -186,6 +186,9 @@ public class AuthDAO {
 			ps.setString(3, lastname);
 			ps.setString(4, address);
 			ps.setString(5, city);
+			ps.setString(6, state_country);
+			ps.setString(7, zipcode);
+			ps.setString(8, phone_number);
 	
 			ps.executeUpdate();
 			ps.close();

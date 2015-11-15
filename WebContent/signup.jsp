@@ -40,9 +40,9 @@
     
     <br><input id="address" type="text" name="address" placeholder="Address">   
     <br><input id="city" type="text" name="city" placeholder="City">   
-    <br><input id="state" type="text" name="state" placeholder="State">   
+    <br><input id="state_country" type="text" name="state_country" placeholder="State">   
     <br><input id="zipcode" type="text" name="zipcode" placeholder="Zipcode">   
-    <br><input id="phonenumber" type="text" name="phonenumber" placeholder="Phone Number">   
+    <br><input id="phone_number" type="text" name="phone_number" placeholder="Phone Number">   
 
     <input type="submit" name="submit" class="login login-register" value="SUBMIT">
 <!-- 	<input type="reset" name="reset" class="login login-register" value="Reset" >  -->
