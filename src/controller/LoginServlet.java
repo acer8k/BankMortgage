@@ -122,7 +122,8 @@ public class LoginServlet extends HttpServlet {
 			if(ID!=-1 ){ //User Is Legit!!
 				loggedIn = "true";
 				HttpSession se = request.getSession();
-				se.setAttribute("user", dao.GetData.getProfileFromId(ID));
+				se.setAttribute("user_profile", dao.GetData.getProfileFromId(ID));
+				se.setAttribute("user", dao.AuthDAO.getUserById(ID));
 				se.setAttribute("loggedIn", loggedIn);
 				url = "/index.jsp";
 				url = "/homescreen_unlocked.jsp";

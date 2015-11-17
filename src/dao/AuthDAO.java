@@ -25,6 +25,7 @@ public class AuthDAO {
 		String password = "";
 		String firstName = "";
 		String lastName = "";
+		String email = "";
 
 		try {
 			//ConnectToDB();
@@ -41,6 +42,7 @@ public class AuthDAO {
 				username = rs.getString("username");
 				firstName = rs.getString("firstName");
 				lastName = rs.getString("lastName");
+				email = rs.getString("email");
 
 			}
 			rs.close();
@@ -53,10 +55,10 @@ public class AuthDAO {
 
 		User u = new User();
 		u.setUserId(userId);
-		//u.se
-		//u.setFirstName(firstName);
-	//	u.setLastName(lastName);
-	//	u.setUsername(username);
+		u.setEmail(email);
+/*		u.setFirstName(firstName);
+		u.setLastName(lastName);*/
+		u.setUsername(username);
 		return u;
 	}
 

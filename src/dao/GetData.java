@@ -179,6 +179,9 @@ public class GetData {
 				output.setLastName(rs.getString("lastName"));
 				output.setCity(rs.getString("city"));
 				output.setAddress(rs.getString("address"));
+				//output.setPhone_number(rs.getInt("phonenumber"));
+				output.setZipcode(rs.getInt("zipcode"));
+				output.setState_country(rs.getString("state_country"));
 				output.setAccounts(getAccounts(userId));
 			}
 		

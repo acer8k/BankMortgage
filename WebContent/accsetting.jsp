@@ -6,8 +6,8 @@
 <html>
 <%
 	//String loggedIn = (String) session.getAttribute("loggedIn");
-	User_Profile u = (User_Profile)session.getAttribute("user");
-	User userJava = (User)session.getAttribute("userJ");
+	User_Profile u = (User_Profile)session.getAttribute("user_profile");
+	User userJava = (User)session.getAttribute("user");
 	String msg = (String) request.getAttribute("msg");
 	if(msg == null)
 		msg="";
@@ -79,8 +79,8 @@
     <thead>
       <tr>
         <th>E-MAIL</th>
-                <td>Error displaying email</td>
-        <%-- <td><%=userJava.getEmail()%></td> --%>
+               <!--  <td>Error displaying email</td> -->
+        <td><%=userJava.getEmail()%></td>
       </tr>
     </thead>
 	    <thead>
