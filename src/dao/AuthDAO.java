@@ -31,7 +31,7 @@ public class AuthDAO {
 			//ConnectToDB();
 			 Class.forName(DB_DRIVER);
 			 cn = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
-			String q = "SELECT username, firstName, lastName FROM users"
+			String q = "SELECT username, firstName, lastName, email FROM users"
 					+ " JOIN user_profiles ON users.user_Id=user_profiles.user_Id"
 					+ " WHERE users.user_Id="
 					+ userId;

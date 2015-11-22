@@ -11,13 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.EmailUtility;
 
-/**
- * A servlet that takes message details from user and send it as a new e-mail
- * through an SMTP server.
- * 
- * @author www.codejava.net
- * 
- */
+
 //@WebServlet("/EmailSendingServlet")
 public class EmailSendingServlet extends HttpServlet {
 	private String host;
@@ -47,7 +41,7 @@ public class EmailSendingServlet extends HttpServlet {
 		try {
 			EmailUtility.sendEmail(host, port, user, pass, rep, subject,
 					content);
-			resultMessage = "The e-mail was sent successfully";
+			resultMessage = "email sent!!";
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			resultMessage = "There were an error: " + ex.getMessage();

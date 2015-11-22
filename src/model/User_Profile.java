@@ -14,7 +14,7 @@ public class User_Profile {
 
 
 	//private int phone;
-	private int phone_number;
+	private String phone_number;
 	private int zipcode;
 	
 	private ArrayList<Account> accounts;
@@ -27,13 +27,13 @@ public class User_Profile {
 		address = "";
 		state_country = "";
 		//phone = -1;
-		phone_number=0;
+		phone_number="";
 		zipcode=0;
 		accounts = new ArrayList<Account>();
 	}
 	
 	public User_Profile(int uId, String fName, String lName, String tCity, 
-						String tAddress, String tstate_country, int uPhone, int uZipcode){
+						String tAddress, String tstate_country, String uPhone, int uZipcode){
 		user_Id = uId;
 		firstName = fName;
 		lastName = lName;
@@ -47,7 +47,7 @@ public class User_Profile {
 	}
 	
 	public User_Profile(int uId, String fName, String lName, String tCity, 
-			String tAddress, String tstate_country, int uPhone, int uZipcode, ArrayList<Account> acc){
+			String tAddress, String tstate_country, String uPhone, int uZipcode, ArrayList<Account> acc){
 		user_Id = uId;
 		firstName = fName;
 		lastName = lName;
@@ -105,10 +105,10 @@ public class User_Profile {
 	public void setState_country(String i) {
 		state_country = i;
 	}
-	public int getPhone_number() {
+	public String getPhone_number() {
 		return phone_number;
 	}
-	public void setPhone_number(int i) {
+	public void setPhone_number(String i) {
 		phone_number = i;
 	}
 	public int getZipcode() {

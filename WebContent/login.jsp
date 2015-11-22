@@ -25,8 +25,6 @@ if(loggedIn==null){
 %>
 <body>  
 <%
-//MAKING A CAPTCHA OBJECT
-//NEED TO IMPORT THE CaptchasDotNet Class in auth
 CaptchasDotNet captchas = new controller.CaptchasDotNet(
   request.getSession(true),     // Ensure session
   "Trudgling",                       // client <--use these
