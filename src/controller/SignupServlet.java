@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import static controller.WelcomeEmail.*;
 import static dao.AuthDAO.*;
 
 /**
@@ -57,6 +58,8 @@ public class SignupServlet extends HttpServlet {
 		//String role = request.getParameter("role");
 		String password = request.getParameter("password");
 		String cpassword = request.getParameter("cpassword");
+		
+		final String emailtype = "reg";
 		
 		final String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		
@@ -109,7 +112,7 @@ public class SignupServlet extends HttpServlet {
 		}
 		if(email.length()==0){
 			url = "/signup.jsp";
-			msg = msg + "\n EMAIL not entered";
+			msg = msg + "\n Email not entered";
 			request.setAttribute("msg", msg);
 			flag=0;
 		}
@@ -117,7 +120,7 @@ public class SignupServlet extends HttpServlet {
 			eflag = 1;
 			if(!email.matches(emailPattern)){
 				url = "/signup.jsp";
-				msg = msg + "\nPlease fill-in Valid Email";
+				msg = msg + "\n Invalid Email!";
 				request.setAttribute("msg", msg);
 				eflag=0;
 			}
@@ -191,6 +194,9 @@ public class SignupServlet extends HttpServlet {
 					msg = "Your bank account is created successfully!";
 					request.setAttribute("msg", msg);
 					url = "/login.jsp";
+					//sendMail(email);
+					sendMail(email, "Welcome to UAB", "Thank you for registering with Universal Bank of Albany","reg");
+					
 				}
 				else{
 					msg = "UserName Insert Failed, ERROR";
@@ -214,7 +220,6 @@ public class SignupServlet extends HttpServlet {
 	}
 
 }
-
 
 
 

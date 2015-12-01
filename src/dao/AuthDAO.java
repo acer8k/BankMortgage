@@ -114,6 +114,7 @@ public class AuthDAO {
 		return true;
 	}
 
+	
 	public static int enterNewUser(String username, String password, String email) {
 		int userId = -1;
 		int ID = 0;

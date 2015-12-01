@@ -1,3 +1,7 @@
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@page import="model.*"%>
 <%@page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -92,6 +96,7 @@
   </table>
   
     <h3>Mailing Address</h3>
+    <td><a href="accsetting_update.jsp?user_Id=<c:out value="${row.user_Id}"/>">Update</a></td>
             
  <table style="width: 40%;" class="table table-bordered">
     <thead>
