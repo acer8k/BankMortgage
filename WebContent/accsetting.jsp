@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-	//String loggedIn = (String) session.getAttribute("loggedIn");
+	String loggedIn = (String) session.getAttribute("loggedIn");
 	User_Profile u = (User_Profile)session.getAttribute("user_profile");
 	User userJava = (User)session.getAttribute("user");
 	String msg = (String) request.getAttribute("msg");
@@ -18,10 +18,12 @@
 		
 %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css_styles/bootstrap.homescreen.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" href="css_styles/bootstrap.homescreen.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ 
 <title>My Account - Settings</title>
 </head>
 <body>
@@ -39,6 +41,7 @@
       <ul class="nav navbar-nav">
 
          <li><a href="homescreen_unlocked.jsp">Home</a></li>
+         <li>  <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-danger" role="button">Update Contact Information</a></li>
       
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -54,9 +57,7 @@
     </div>
   </div>
 </nav>
-<div class="container">
-  <h2 align="center">Page in progess!</h2>     
-  </div>
+
   
 <div class="container">
   <h3>User Info</h3>
@@ -64,13 +65,13 @@
  <table style="width: 25%;" class="table table-bordered">
     <thead>
       <tr>
-        <th>USERNAME</th>
-        <td>2323</td>
+        <th>Username</th>
+        <td><%=userJava.getUsername()%></td>
       </tr>
     </thead>
 	    <thead>
       <tr>
-        <th>NAME</th>
+        <th>Name</th>
         <td> <%=u.getFirstName() + " " + u.getLastName() %></td>
       </tr>
     </thead>
@@ -96,8 +97,10 @@
   </table>
   
     <h3>Mailing Address</h3>
-    <td><a href="accsetting_update.jsp?user_Id=<c:out value="${row.user_Id}"/>">Update</a></td>
-            
+   
+    
+
+         
  <table style="width: 40%;" class="table table-bordered">
     <thead>
       <tr>
@@ -132,6 +135,9 @@
 
   </table>
 </div>
+
+<%-- <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>"><b>Update Contact Information<b></a> --%>  
+	<%--  <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-danger" role="button">Update Contact Information</a> --%>
 
 </body>
 </html>
