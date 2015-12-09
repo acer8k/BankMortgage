@@ -32,7 +32,7 @@ public class TransferServlet extends HttpServlet {
 			// TODO Auto-generated method stub
 			
 		 HttpSession mySession = request.getSession();
-		 User_Profile myUser = (User_Profile)mySession.getAttribute("user");
+		 User_Profile myUser = (User_Profile)mySession.getAttribute("user_profile");
 		 String transAcc = request.getParameter("transAcc");
 		 String target = request.getParameter("target");
 		 String amm = request.getParameter("transAmmount");
@@ -64,7 +64,7 @@ public class TransferServlet extends HttpServlet {
 		 }
 		 	
 		 	myUser = dao.GetData.getProfileFromId(myUser.getUserId());
-		 	mySession.setAttribute("user", myUser);
+		 	mySession.setAttribute("user_profle", myUser);
 		 	
 		 	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homescreen_unlocked.jsp");
 			dispatcher.forward(request, response);

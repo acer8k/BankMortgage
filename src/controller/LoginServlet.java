@@ -16,17 +16,16 @@ import model.*;
 import dao.GetData;
 import dao.AuthDAO;
 
+
+
+
 /**
  * Servlet implementation class LoginServlet
  */
 //@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-/*	private static final String success = "success.jsp";  
-	private static final String retailer = "retailer.jsp";
-	private static final String customer = "customer.jsp";
-	private static final String wholesaler = "wholesaler.jsp";
-	private static final String supplier = "supplier.jsp";*/
+
 	private static final String redirect = "error.jsp";   
     /**
      * @see HttpServlet#HttpServlet()
@@ -54,7 +53,7 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		String username = request.getParameter("user");
+		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		//String role = request.getParameter("role");
 		String msg="";
@@ -123,10 +122,17 @@ public class LoginServlet extends HttpServlet {
 				loggedIn = "true";
 				HttpSession se = request.getSession();
 				se.setAttribute("user_profile", dao.GetData.getProfileFromId(ID));
-				se.setAttribute("user", dao.AuthDAO.getUserById(ID));
+				User myUser = dao.AuthDAO.getUserById(ID);
+				se.setAttribute("user", myUser);
 				se.setAttribute("loggedIn", loggedIn);
-				url = "/index.jsp";
-				url = "/homescreen_unlocked.jsp";
+				//url = "/index.jsp";
+				System.out.println(myUser.getType());
+				if(myUser.getType().equals("user")){
+					url = "/homescreen_unlocked.jsp";
+				}
+				else if(myUser.getType().equals("admin")){
+					url = "/Admin_Index.jsp";
+				}
 				msg = "Login Successful!";
 				
 				se.setAttribute("returnMes", "");

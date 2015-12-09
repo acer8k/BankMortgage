@@ -6,6 +6,7 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
+	private String type;
 
 	public User(){
 		userId = -1;
@@ -14,18 +15,20 @@ public class User {
 		password = "";
 	}
 	
-	public User(String eM, String uN, String pW){
+	public User(String eM, String uN, String pW, String ty){
 		userId = -1;
 		email = eM;
 		username = uN;
 		password = pW;
+		type = ty;
 	}
 	
-	public User(int uI, String eM, String uN, String pW){
+	public User(int uI, String eM, String uN, String pW, String ty){
 		userId = uI;
 		email = eM;
 		username = uN;
 		password = pW;
+		type = ty;
 	}
 	
 	public int getUserId() {
@@ -52,5 +55,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String ty) {
+		this.type = ty;
+	}
+	
 	
 }

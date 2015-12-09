@@ -13,19 +13,26 @@
 	User_Profile u = (User_Profile)session.getAttribute("user_profile");
 	User userJava = (User)session.getAttribute("user");
 	String msg = (String) request.getAttribute("msg");
-	Integer currentAccount = (Integer)session.getAttribute("curAcc");
 	if(msg == null)
 		msg="";
-		
+	
 %>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css_styles/bootstrap.homescreen.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
- 
-<title>My Account - Settings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+table, th, td {
+    border: 0.5px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+<title>Update USER</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -42,11 +49,10 @@
       <ul class="nav navbar-nav">
 
          <li><a href="homescreen_unlocked.jsp">Home</a></li>
-         <li>  <a href="USER_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-primary" role="button">Update USER INFORMATION</a></li>
+         
       
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="aboutus.jsp"></span> About Us</a></li>
         <li><a href="contact2.jsp"></span> Contact Us</a></li>
        <!--  <li><a href="logout.jsp"></span> Logout</a></li> -->
        
@@ -57,88 +63,37 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> 
+        <form action="UserUpdateServlet" name ="UpdateUserInfo" method="post">
+            <table align="center">
+                       <tr>
+                        <tr>
+                        <th>Address</th>
+                        <td><input type="hidden" value="<%=u.getUserId()%>" name="user_Id"/>
+                         	<input type="text" value="<%=u.getAddress()%>" name="address" /></td>
+                        </tr> 
+                        <tr>
+                        <th>City</th>
+                        <td><input type="text" value="<%=u.getCity()%>" name="city"/></td>
+                        </tr>
+                        <tr>
+                        <th>State</th>
+                        <td><input type="text" value="<%=u.getState_country()%>" name="state_country"/></td>
+                        </tr>
+                        <tr>
+                        <th>Zip Code</th>
+                        <td><input type="text" value="<%=u.getZipcode()%>" name="zipcode"/></td>
+                        </tr>
+                        <tr>
+                        <th>Phone Number</th>
+                        <td><input type="text" value="<%=u.getPhone_number()%>" name="phone_number"/></td>
+                        </tr>
+                        
+                        <td><input type="submit" class="btn btn-success" value="Confirm"/></td>
+                        <td><a href="accsetting.jsp" class="btn btn-primary" role="button">Back to Account Page</a></td>
+     
+            </table>
+            </form>
 
-  
-<div class="container">
-  <h3>User Info</h3>
-            
- <table style="width: 25%;" class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <td><%=userJava.getUsername()%></td>
-      </tr>
-    </thead>
-	    <thead>
-      <tr>
-        <th>Name</th>
-        <td> <%=u.getFirstName() + " " + u.getLastName() %></td>
-      </tr>
-    </thead>
-
-  </table>
-  
-    <h3>Contact Information</h3>
-            
- <table style="width: 25%;" class="table table-bordered">
-    <thead>
-      <tr>
-        <th>E-MAIL</th>
-               <!--  <td>Error displaying email</td> -->
-        <td><%=userJava.getEmail()%></td>
-      </tr>
-    </thead>
-	    <thead>
-      <tr>
-        <th>Phone #</th>
-        <td><%=u.getPhone_number()%></td>
-      </tr>
-    </thead>
-  </table>
-  
-    <h3>Mailing Address</h3>
-   
-    
-
-         
- <table style="width: 40%;" class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Address 1</th>
-        <td><%=u.getAddress()%></td>
-      </tr>
-    </thead>
-	    <thead>
-      <tr>
-        <th>City</th>
-        <td><%=u.getCity()%></td>
-      </tr>
-    </thead>
-    <thead>
-      <tr>
-        <th>State</th>
-        <td><%=u.getState_country()%></td>
-      </tr>
-    </thead>
-	<thead>
-      <tr>
-        <th>Zip</th>
-        <td><%=u.getZipcode()%></td>
-      </tr>
-    </thead>
-    <thead>
-      <tr>
-        <th>userID</th>
-        <td><%=u.getUserId()%></td>
-      </tr>
-    </thead>
-
-  </table>
-</div>
-
-<%-- <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>"><b>Update Contact Information<b></a> --%>  
-	<%--  <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-danger" role="button">Update Contact Information</a> --%>
-
-</body>
+    </body>
 </html>

@@ -1,19 +1,100 @@
-CREATE TABLE `user` (
-  `userId` int(3) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`userId`),
-  UNIQUE KEY `username` (`username`)
-);
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 08, 2015 at 08:03 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
-CREATE TABLE `user_profile` (
-  `userId` int(3) NOT NULL DEFAULT '0',
-  `firstName` varchar(20) DEFAULT NULL,
-  `lastName` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`userId`),
-  CONSTRAINT `FK` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
-  );
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-INSERT INTO user
-VALUES ('1','superman','4580','supplier');
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `final_bank`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `account_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `balance` double NOT NULL,
+  `intrestRate` double NOT NULL,
+  `type` varchar(20) NOT NULL,
+  PRIMARY KEY (`account_Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ownerships`
+--
+
+CREATE TABLE IF NOT EXISTS `ownerships` (
+  `account_Id` int(11) NOT NULL,
+  `user_Id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `transaction_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(20) NOT NULL,
+  `ammount` double NOT NULL,
+  `account_Id` int(11) NOT NULL,
+  `time` time NOT NULL,
+  `date` date NOT NULL,
+  `oldValue` double NOT NULL,
+  PRIMARY KEY (`transaction_Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_Id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `account_Type` varchar(10) NOT NULL,
+  PRIMARY KEY (`user_Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_profiles`
+--
+
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `user_Id` int(11) NOT NULL,
+  `firstName` varchar(20) NOT NULL,
+  `lastName` varchar(20) NOT NULL,
+  `address` varchar(20) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `state_country` varchar(20) NOT NULL,
+  `zipcode` int(6) NOT NULL,
+  `phonenumber` varchar(12) NOT NULL,
+  PRIMARY KEY (`user_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

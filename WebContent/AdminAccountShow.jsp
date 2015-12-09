@@ -48,17 +48,31 @@
 <body>
 <%
 User_Profile myUser = (User_Profile)session.getAttribute("user_profile");
-Integer currentAccount = (Integer)session.getAttribute("curAcc");
+Account currentAccount = (Account)session.getAttribute("curAcc");
+ArrayList<User_Profile> owners = (ArrayList<User_Profile>)session.getAttribute("owners");
+session.setAttribute("returnMes", "");
 
 ArrayList<Transaction> history = (ArrayList<Transaction>)session.getAttribute("history");
 
 %>
 
 
-<%= "Details for " + myUser.getAccounts().get(currentAccount.intValue()).getType() + " account #" + myUser.getAccounts().get(currentAccount.intValue()).getAccountId()  %>
+<%= "Details for " + currentAccount.getType() + " account #" + currentAccount.getAccountId()  %>
 <br>
-<%="Balance: " + myUser.getAccounts().get(currentAccount.intValue()).getBalance()%>
+<%="Balance: " + currentAccount.getBalance()%>
 <br>
+<%="Intrest Rate: " + currentAccount.getIntrestRate()%>
+<br>
+<br>
+<%="Owners:"  %>
+<%	for(int i = 0; i < owners.size();i++){
+%>
+<br>
+<% 
+	out.print(owners.get(i).getUserId() + "    "+ owners.get(i).getFirstName() + " " + owners.get(i).getLastName());
+	}
+%>
+
 <h3>HISTORY</h3>
 <%="---------------------------\n" %>
 <br>

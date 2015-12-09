@@ -18,7 +18,7 @@ import model.*;
 /**
  * Servlet implementation class ViewAccnType
  */
-public class ViewAccnType extends HttpServlet {
+public class AdminOpenAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String checkingAccount = "checkAccn.jsp";
@@ -30,7 +30,7 @@ public class ViewAccnType extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAccnType() {
+    public AdminOpenAccount() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,21 +42,33 @@ public class ViewAccnType extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-			String role = request.getParameter("accn");
+			String type = request.getParameter("accType");
+			int user_Id = new Integer(request.getParameter("uId")).intValue();
+			double balance = new Double(request.getParameter("initBal")).doubleValue();
+			double intRate = new Double(request.getParameter("iRate")).doubleValue();
 			HttpSession mySession = request.getSession();
 			
-		
-		for(int i = 0 ; i < (int)((User_Profile)mySession.getAttribute("user_profile")).getAccounts().size();i++){
-			if(role.equals(""+i)){
-				ArrayList<Transaction> out = new ArrayList<Transaction>();
-				out = GetData.getHistory(((User_Profile)mySession.getAttribute("user_profile")).getAccounts().get(i).getAccountId());
-				mySession.setAttribute("history", out);
-				mySession.setAttribute("curAcc", i);
-			}
+			//User_Profile curMem = dao.GetData.getProfileFromId(new Integer(role).intValue());
+			int acc_Id = dao.InsertData.createAccount(type, balance, intRate);
 			
-		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(AccountShow);
-		dispatcher.forward(request, response);	
+			if(acc_Id != -1){
+				
+				if(dao.InsertData.createOwnership(acc_Id, user_Id)){
+				mySession.setAttribute("returnMes", "Account created.");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin_Index.jsp");
+				dispatcher.forward(request, response);	
+				}
+				else{
+					mySession.setAttribute("returnMes", "Ownership creation failed.");
+					RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin_Index.jsp");
+					dispatcher.forward(request, response);
+				}
+			}
+			else{
+				mySession.setAttribute("returnMes", "Account creation failed.");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin_Index.jsp");
+				dispatcher.forward(request, response);
+			}
 		
 	}
 

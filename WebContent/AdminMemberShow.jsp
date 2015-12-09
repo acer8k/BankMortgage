@@ -9,14 +9,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
+	session.setAttribute("returnMes", "");
 	String loggedIn = (String) session.getAttribute("loggedIn");
-	User_Profile u = (User_Profile)session.getAttribute("user_profile");
+	User_Profile u = (User_Profile)session.getAttribute("curMem");
+	User curUser = (User)session.getAttribute("curUser");
 	User userJava = (User)session.getAttribute("user");
 	String msg = (String) request.getAttribute("msg");
-	Integer currentAccount = (Integer)session.getAttribute("curAcc");
+	//Integer currentAccount = (Integer)session.getAttribute("curAcc");
 	if(msg == null)
 		msg="";
-		
+		 
 %>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -42,7 +44,7 @@
       <ul class="nav navbar-nav">
 
          <li><a href="homescreen_unlocked.jsp">Home</a></li>
-         <li>  <a href="USER_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-primary" role="button">Update USER INFORMATION</a></li>
+         
       
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -67,7 +69,7 @@
     <thead>
       <tr>
         <th>Username</th>
-        <td><%=userJava.getUsername()%></td>
+        <td><%=curUser.getUsername()%></td>
       </tr>
     </thead>
 	    <thead>
@@ -86,7 +88,7 @@
       <tr>
         <th>E-MAIL</th>
                <!--  <td>Error displaying email</td> -->
-        <td><%=userJava.getEmail()%></td>
+        <td><%=curUser.getEmail()%></td>
       </tr>
     </thead>
 	    <thead>
@@ -136,6 +138,32 @@
 
   </table>
 </div>
+
+
+<div class="container">
+  <h3>Accounts with ownership:</h3>
+            
+ <table style="width: 25%;" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Account Type</th>
+        <td> Account Id</td>
+      </tr>
+    </thead>
+	
+	<% 
+for(int i = 0; i < u.getAccounts().size();i++){
+	%>
+	<tr>
+        <th><%=u.getAccounts().get(i).getType()%></th>
+        <td><%=u.getAccounts().get(i).getAccountId()%></td>
+      </tr>
+	<% 
+}
+	%>
+
+  </table>
+
 
 <%-- <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>"><b>Update Contact Information<b></a> --%>  
 	<%--  <a href="accsetting_update.jsp?user_Id=<%=u.getUserId()%>" class="btn btn-danger" role="button">Update Contact Information</a> --%>

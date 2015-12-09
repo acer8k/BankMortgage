@@ -13,49 +13,9 @@
 	<link rel="stylesheet" href="css_styles/bootstrap.homescreen.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-<style>
-td:nth-of-type(2) {
-padding-right: 10px;
-}
-
-
-</style>  	
 <title>Update Users</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="">Universal Bank of Albany</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-
-         <li><a href="homescreen_unlocked.jsp">Home</a></li>
-        
-      
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="aboutus.jsp"></span> About Us</a></li>
-        <li><a href="contact2.jsp"></span> Contact Us</a></li>
-       <!--  <li><a href="logout.jsp"></span> Logout</a></li> -->
-       
-          <li>	<form action="LogoutServlet" method="post">
- 	<input type="submit" value="Logout" name="logout " style="background-color:#660066; color:#FFFF00; height:50px; width:65px; font-weight: 900;"/>
-      </form></li>
-	
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
         <sql:setDataSource var="dbsource" driver="com.mysql.jdbc.Driver"
                            url="jdbc:mysql://localhost/bank"
                            user="root"  password="4580"/>
@@ -67,16 +27,17 @@ padding-right: 10px;
                 <form action="Admin_Update_DB.jsp" method="post">
             <table align="center">
                     <c:forEach var="row" items="${result.rows}">
- 				<tr>
-   				 <td><input type="hidden" value="${param.user_Id}" name="user_Id"/>
-   				 <td><input class="form-control" type="text" value="${row.email}" name="email" /></td>
-   				 <td><input type="submit" class="btn btn-success" value="Confirm"/></td>&nbsp;
-   				 <td>&nbsp;&nbsp;&nbsp;<a href="Admin_Index.jsp" class="btn btn-primary" role="button">Back to Admin PAGE</a></td>
- 				 </tr> 
-                 	</c:forEach>
+                    <tr>
+                        <tr>
+                        <th>EMAIL</th>
+                        <td><input type="hidden" value="${param.user_Id}" name="user_Id"/>
+                         	<input type="text" value="${row.email}" name="email" /></td>
+                        </tr> 
+
+                        <td><input type="submit" class="btn btn-success" value="Confirm"/></td>
+                        <td><a href="Admin_Index.jsp" class="btn btn-primary" role="button">Back to Admin INDEX</a></td>
+                </c:forEach>
             </table>
             </form>                  
 </body>
 </html>
-
-

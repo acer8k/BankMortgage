@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 
-         <li><a href="homescreen.jsp">Home</a></li>
+         <li><a href="homescreen_unlocked.jsp">Home</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

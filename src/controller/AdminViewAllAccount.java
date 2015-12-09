@@ -18,7 +18,7 @@ import model.*;
 /**
  * Servlet implementation class ViewAccnType
  */
-public class ViewAccnType extends HttpServlet {
+public class AdminViewAllAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String checkingAccount = "checkAccn.jsp";
@@ -30,7 +30,7 @@ public class ViewAccnType extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAccnType() {
+    public AdminViewAllAccount() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,23 +41,14 @@ public class ViewAccnType extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession mySes = request.getSession();
 		
-			String role = request.getParameter("accn");
-			HttpSession mySession = request.getSession();
-			
+		ArrayList<Account> output = dao.GetData.getAllAccounts();
 		
-		for(int i = 0 ; i < (int)((User_Profile)mySession.getAttribute("user_profile")).getAccounts().size();i++){
-			if(role.equals(""+i)){
-				ArrayList<Transaction> out = new ArrayList<Transaction>();
-				out = GetData.getHistory(((User_Profile)mySession.getAttribute("user_profile")).getAccounts().get(i).getAccountId());
-				mySession.setAttribute("history", out);
-				mySession.setAttribute("curAcc", i);
-			}
-			
-		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(AccountShow);
+		mySes.setAttribute("accs", output);
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminAllAccountShow.jsp");
 		dispatcher.forward(request, response);	
-		
 	}
 
 	/**

@@ -18,7 +18,7 @@ import model.*;
 /**
  * Servlet implementation class ViewAccnType
  */
-public class ViewAccnType extends HttpServlet {
+public class AdminMemberView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String checkingAccount = "checkAccn.jsp";
@@ -30,7 +30,7 @@ public class ViewAccnType extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAccnType() {
+    public AdminMemberView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,21 +42,23 @@ public class ViewAccnType extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-			String role = request.getParameter("accn");
+			String role = request.getParameter("selectedMem");
 			HttpSession mySession = request.getSession();
 			
-		
-		for(int i = 0 ; i < (int)((User_Profile)mySession.getAttribute("user_profile")).getAccounts().size();i++){
-			if(role.equals(""+i)){
-				ArrayList<Transaction> out = new ArrayList<Transaction>();
-				out = GetData.getHistory(((User_Profile)mySession.getAttribute("user_profile")).getAccounts().get(i).getAccountId());
-				mySession.setAttribute("history", out);
-				mySession.setAttribute("curAcc", i);
-			}
+			User_Profile curMem = dao.GetData.getProfileFromId(new Integer(role).intValue());
 			
-		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(AccountShow);
-		dispatcher.forward(request, response);	
+			if(curMem != null){
+				mySession.setAttribute("curMem", curMem);
+				mySession.setAttribute("curUser", dao.AuthDAO.getUserById(curMem.getUserId()));
+		
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AdminMemberShow.jsp");
+				dispatcher.forward(request, response);	
+			}
+			else{
+				mySession.setAttribute("msg", "No such Member.");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin_Index.jsp");
+				dispatcher.forward(request, response);
+			}
 		
 	}
 

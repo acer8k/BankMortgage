@@ -32,7 +32,7 @@ public class indexServlet extends HttpServlet {
 			// TODO Auto-generated method stub
 			
 		 HttpSession mySession = request.getSession();
-		 User_Profile myUser = (User_Profile)mySession.getAttribute("user");
+		 User_Profile myUser = (User_Profile)mySession.getAttribute("user_profile");
 		 String mAcc = request.getParameter("mortAccn");
 		 String cAcc = request.getParameter("checkAcc");
 		 String amm = request.getParameter("payAmmount");
@@ -55,7 +55,7 @@ public class indexServlet extends HttpServlet {
 		 }
 		 	
 		 	myUser = dao.GetData.getProfileFromId(myUser.getUserId());
-		 	mySession.setAttribute("user", myUser);
+		 	mySession.setAttribute("user_profile", myUser);
 		 	
 		 	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homescreen_unlocked.jsp");
 			dispatcher.forward(request, response);

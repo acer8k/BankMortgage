@@ -8,10 +8,13 @@
 
 <%
 	String loggedIn = (String) session.getAttribute("loggedIn");
+	User myUser = (User)session.getAttribute("user");
 	User_Profile u = (User_Profile)session.getAttribute("user_profile");
 	String msg = (String) request.getAttribute("msg");
 	if(msg == null)
 		msg="";
+	if(myUser.getType().equals("admin"))
+		response.sendRedirect("Admin_Index.jsp");
 		
 %>
 

@@ -11,7 +11,7 @@ import model.*;
 public class InsertData {
 
 	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_CONNECTION = "jdbc:mysql://localhost/bank";
+	private static final String DB_CONNECTION = "jdbc:mysql://localhost/final_bank";
 	private static final String DB_USER = "root";
 	private static final String DB_PASSWORD = "4580";
 	
@@ -30,7 +30,7 @@ public class InsertData {
 			dbConnection = getDBConnection();
 			statement = dbConnection.createStatement();
 
-			System.out.println(insertTableSQL);
+			//System.out.println(insertTableSQL);
 
 			// execute insert SQL statement
 			statement.executeUpdate(insertTableSQL);
@@ -297,8 +297,88 @@ return flag;
 		return flag;
 	}
 		
-	
+	public static int createAccount(String type, double bal, double iRate){
+		
+		int flag = -1;
+		Connection dbConnection = null;
+		Statement statement = null;
 
+		String insertTableSQL = "INSERT INTO accounts (balance,intrestRate,type) VALUES ('" + bal + "','" + iRate + "','" + type + "')";
+		
+		try {
+			dbConnection = getDBConnection();
+			statement = dbConnection.createStatement();
+
+			//System.out.println(insertTableSQL);
+
+			// execute insert SQL statement
+			statement.executeUpdate(insertTableSQL);
+
+			//System.out.println("Record is inserted into USERS table!");
+			
+			String getID = "SELECT MAX(account_Id) AS myMax FROM accounts";
+			Statement getStatement = dbConnection.createStatement();
+			
+			ResultSet rs = getStatement.executeQuery(getID);
+			
+			if(rs.next()){
+			flag = rs.getInt("myMax");	
+			}
+
+		} catch (SQLException e) {
+
+			System.out.println(e.getMessage());
+
+		} finally {
+
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (dbConnection != null) {
+				try {
+					dbConnection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+		return flag;
+	}
+
+	public static boolean createOwnership(int aId, int uId){
+		boolean flag = false;
+		Connection dbConnection = null;
+		Statement statement = null;
+
+		String insertTableSQL = "INSERT INTO ownerships (account_Id,user_Id) VALUES ('" + aId + "','" + uId +"')";
+		
+		try {
+			dbConnection = getDBConnection();
+			statement = dbConnection.createStatement();
+
+			//System.out.println(insertTableSQL);
+
+			// execute insert SQL statement
+			statement.executeUpdate(insertTableSQL);
+			flag = true;
+		}
+		 catch (SQLException e) {
+			 	flag = false;
+				System.out.println(e.getMessage());
+
+			}
+		return flag;
+		
+	}
+	
 	private static Connection getDBConnection() {
 
 		Connection dbConnection = null;

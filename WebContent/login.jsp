@@ -47,7 +47,7 @@ CaptchasDotNet captchas = new controller.CaptchasDotNet(
 %>
    
    <form action="LoginServlet" method="post">
-    <input type="text" name="user" placeholder="Username">
+    <input type="text" name="username" placeholder="Username">
     <input type="password" name="pass" placeholder="Password">
 
     

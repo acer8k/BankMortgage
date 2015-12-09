@@ -48,26 +48,25 @@
 <body>
 <%
 User_Profile myUser = (User_Profile)session.getAttribute("user_profile");
-Integer currentAccount = (Integer)session.getAttribute("curAcc");
+//Account currentAccount = (Account)session.getAttribute("curAcc");
 
-ArrayList<Transaction> history = (ArrayList<Transaction>)session.getAttribute("history");
+ArrayList<Account> accounts = (ArrayList<Account>)session.getAttribute("accs");
+session.setAttribute("returnMes", "");
 
 %>
 
 
-<%= "Details for " + myUser.getAccounts().get(currentAccount.intValue()).getType() + " account #" + myUser.getAccounts().get(currentAccount.intValue()).getAccountId()  %>
+
 <br>
-<%="Balance: " + myUser.getAccounts().get(currentAccount.intValue()).getBalance()%>
-<br>
-<h3>HISTORY</h3>
+<h3>All Accounts</h3>
 <%="---------------------------\n" %>
 <br>
-<%="Transaction ID\t\t\tType\t\t\tAmount\t\t\tAccount\t\t\tDate\t\t\tTime\t\t\tPervious Balance" %>
-<%	for(int i = history.size() - 1; i > -1;i--){
+<%="Account ID\t\t\tType\t\t\tBalance\t\t\tInterest Rate\t\t\t" %>
+<%	for(int i = accounts.size() - 1; i > -1;i--){
 %>
 <br>
 <% 
-	out.print(history.get(i).toString());
+	out.print(accounts.get(i).getAccountId() + "\t" + accounts.get(i).getType() + "\t" + accounts.get(i).getBalance() + "\t" + accounts.get(i).getIntrestRate());
 	}
 %>
 
