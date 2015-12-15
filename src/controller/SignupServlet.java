@@ -195,7 +195,8 @@ public class SignupServlet extends HttpServlet {
 					request.setAttribute("msg", msg);
 					url = "/login.jsp";
 					//sendMail(email);
-					sendMail(email, "Welcome to UBA", "Thank you for registering with Universal Bank of Albany","reg");
+					sendMail(email, "Welcome to UBA", "Hello " +
+							 firstname + ", thank you for registering with Universal Bank of Albany","reg");
 					
 				}
 				else{

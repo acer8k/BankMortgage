@@ -234,8 +234,8 @@ $(document).ready(function() {
         	<li class="dropdown">               
         	</li>
         	<li><a href="mortgage_calc.jsp">Mortgage Calculator</a></li>
-        	<li><a href="#">Monthly Statements</a></li>
-        	<li><a href="#">Make Payments</a></li>
+<!--         	<li><a href="#">Monthly Statements</a></li>
+        	<li><a href="#">Make Payments</a></li> -->
         	<li><a href="tax_form.jsp">Tax Forms</a></li>
       		</ul>
     	</div>

@@ -27,7 +27,6 @@ public class WelcomeEmail {
 		mailSet.setProperty("mail.smtp.port", "465");
 		mailSet.setProperty("mail.smtp.socketFactory.port", "465");
 		mailSet.put("mail.smtp.auth", "true");
-		// mailSet.put("mail.debug", "true");
 		mailSet.put("mail.store.protocol", "pop3");
 		mailSet.put("mail.transport.protocol", "smtp");
 

@@ -63,11 +63,7 @@
 		<p class="smpc-monthlypayment" id="monthlyPayment"></p>
 		<p class="smpc-friendlyreminder" id="friendlyReminder">This is
 			your principal + interest payment, or in other words, what you send
-			to the bank each month. But remember, you will also have to budget
-			for homeowners insurance, real estate taxes, and if you are unable to
-			afford a 20% down payment, Private Mortgage Insurance (PMI). These
-			additional costs could increase your monthly outlay by as much 50%,
-			sometimes more.</p>
+			to the bank each month.</p>
 	</div>
 	
 </body>

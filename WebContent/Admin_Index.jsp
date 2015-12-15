@@ -125,8 +125,8 @@ $(document).ready(function() {
  -->  
      <div id="tabs">
             <ul>
-                <li><a class="tabref" href="#tabs-1">Veiw Account</a></li>
-                <li><a class="tabref" href="#tabs-2" rel="https://www.google.com">Veiw Member</a></li>
+                <li><a class="tabref" href="#tabs-1">View Account</a></li>
+                <li><a class="tabref" href="#tabs-2" rel="https://www.google.com">View Member</a></li>
                 <li><a class="tabref" href="#tabs-3" rel="https://www.google.com">Open Account</a></li>
             </ul>
             <div id="tabs-1" class="tabMain"><br>
